@@ -30,6 +30,9 @@
 #include <android-base/properties.h>
 #include <android-base/logging.h>
 
+#define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
+#include <sys/_system_properties.h>
+
 #include "property_service.h"
 #include "log.h"
 //#include "util.h"
@@ -39,6 +42,23 @@ namespace init {
 
 static void num_sims(void);
 static void target_ram(void);
+
+void property_override(const std::string& name, const std::string& value)
+{
+    size_t valuelen = value.size();
+
+    prop_info* pi = (prop_info*) __system_property_find(name.c_str());
+    if (pi != nullptr) {
+        __system_property_update(pi, value.c_str(), valuelen);
+    }
+    else {
+        int rc = __system_property_add(name.c_str(), name.size(), value.c_str(), valuelen);
+        if (rc < 0) {
+            LOG(ERROR) << "property_set(\"" << name << "\", \"" << value << "\") failed: "
+                       << "__system_property_add failed";
+        }
+    }
+}
 
 void vendor_load_properties()
 {
