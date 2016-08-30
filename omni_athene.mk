@@ -19,6 +19,7 @@ $(call inherit-product, vendor/omni/config/gsm.mk)
 
 # Inherit device configuration
 $(call inherit-product, device/motorola/athene/full_athene.mk)
+$(call inherit-product, device/motorola/athene/twrp.mk)
 
 # Boot animation
 TARGET_SCREEN_WIDTH := 1080
