@@ -73,7 +73,7 @@ on init
     write /proc/self/coredump_filter "0x7f"
 
     # Symbols required for motorola blobs
-    export LD_SHIM_LIBS /system/vendor/lib/libmot_gpu_mapper.so|libshim_camera.so:/system/vendor/lib/lib-imsvt.so|libshim_ims.so:/system/bin/adspd|libshim_adsp.so:/system/lib/libandroid.so|libshim_ril.so:/system/vendor/lib/libizat_core.so:libshims_get_process_name.so
+    export LD_SHIM_LIBS /system/vendor/lib/libmot_gpu_mapper.so|libshim_camera.so:/system/vendor/lib/lib-imsvt.so|libshims_ims.so:/system/bin/adspd|libshim_adsp.so:/system/lib/libandroid.so|libshim_ril.so:/system/vendor/lib/libizat_core.so:libshims_get_process_name.so
 
     # ESDFS
     chown mot_esdfs root /proc/fs/esdfs/packages
