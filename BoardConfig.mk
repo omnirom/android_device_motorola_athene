@@ -136,6 +136,7 @@ TARGET_SYSTEM_PROP += device/motorola/athene/system.prop
 
 # Crypto
 TARGET_HW_DISK_ENCRYPTION := true
+TARGET_CRYPTFS_HW_PATH := $(LOCAL_PATH)/cryptfs_hw
 
 #Enable peripheral manager
 TARGET_PER_MGR_ENABLED := true
