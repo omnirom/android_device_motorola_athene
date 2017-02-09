@@ -1,0 +1,80 @@
+[
+  {
+    "remote": "omnirom",
+    "repository": "android_device_qcom_caf-sepolicy",
+    "target_path": "device/qcom/sepolicy",
+    "revision": "android-7.1"
+  },
+  {
+    "remote": "omnirom",
+    "repository": "vendor_qcom_opensource_dataservices",
+    "target_path": "vendor/qcom/opensource/dataservices",
+    "revision": "android-7.1"
+  },
+  {
+    "remote": "github",
+    "repository": "golden-guy/android_kernel_motorola_msm8952",
+    "target_path": "kernel/motorola/msm8952",
+    "revision": "android-7.1"
+  },
+  {
+    "remote": "github",
+    "repository": "TheMuppets/proprietary_vendor_motorola",
+    "target_path": "vendor/motorola",
+    "revision": "cm-14.1"
+  },
+  {
+    "remote": "omnirom",
+    "repository": "android_packages_apps_SnapdragonCamera",
+    "target_path": "packages/apps/SnapdragonCamera",
+    "revision": "android-7.1"
+  },
+  {
+    "remote": "omnirom",
+    "repository": "android_external_libnfnetlink",
+    "target_path": "external/libnfnetlink",
+    "revision": "android-7.1"
+  },
+  {
+    "remote": "omnirom",
+    "repository": "android_external_libnetfilter_conntrack",
+    "target_path": "external/libnetfilter_conntrack",
+    "revision": "android-7.1"
+  },
+  {
+    "remote": "omnirom",
+    "repository": "android_hardware_qcom_gps",
+    "target_path": "hardware/qcom/gps",
+    "revision": "android-7.1"
+  },
+  {
+    "remote": "omnirom",
+    "repository": "android_hardware_qcom_audio-caf-msm8952",
+    "target_path": "hardware/qcom/audio-caf-msm8952",
+    "revision": "android-7.1"
+  },
+  {
+    "remote": "omnirom",
+    "repository": "android_hardware_qcom_display-caf-msm8952",
+    "target_path": "hardware/qcom/display-caf-msm8952",
+    "revision": "android-7.1"
+  },
+  {
+    "remote": "omnirom",
+    "repository": "android_hardware_qcom_media-caf-msm8952",
+    "target_path": "hardware/qcom/media-caf-msm8952",
+    "revision": "android-7.1"
+  },
+  {
+    "remote": "github",
+    "repository": "LineageOS/android_external_bson",
+    "target_path": "external/bson",
+    "revision": "cm-14.1"
+  },
+  {
+    "remote": "github",
+    "repository": "LineageOS/android_external_stlport",
+    "target_path": "external/stlport",
+    "revision": "cm-14.1"
+  }
+]
