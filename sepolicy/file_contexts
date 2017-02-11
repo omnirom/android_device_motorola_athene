@@ -43,6 +43,9 @@
 # Radio
 /dev/radio(/.*)?                                            u:object_r:radio_data_file:s0
 
+# Modem
+/fsg(/.*)?                                                  u:object_r:fsg_file:s0
+
 # Sensors
 /dev/stml0xx                                                u:object_r:sensors_device:s0
 /dev/stml0xx_as                                             u:object_r:sensors_device:s0
