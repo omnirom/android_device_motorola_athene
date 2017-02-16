@@ -50,6 +50,7 @@
 /dev/stml0xx                                                u:object_r:sensors_device:s0
 /dev/stml0xx_as                                             u:object_r:sensors_device:s0
 /dev/stml0xx_ms                                             u:object_r:sensors_device:s0
+/system/bin/motosh                                          u:object_r:sensors_exec:s0
 
 # Laser
 /dev/laser                                                  u:object_r:laser_device:s0
