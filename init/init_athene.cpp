@@ -79,6 +79,7 @@ void vendor_load_properties()
         property_set("ro.build.description", "athene_f-user 7.0 NPJ25.93-9 1 release-keys");
         property_set("ro.build.fingerprint", "motorola/athene_f/athene_f:7.0/NPJ25.93-9/1:user/release-keys");
         property_set("ro.product.model", "Moto G4 Plus");
+        property_set("ro.hw.fps", "true");
         property_set("ro.telephony.default_network", "10,10");
     }
 
