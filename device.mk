@@ -112,6 +112,10 @@ PRODUCT_PACKAGES += \
     Snap \
     SnapdragonCamera
 
+# Charger
+PRODUCT_PACKAGES += \
+    omni_charger_res_images
+
 # Gestures
 PRODUCT_PACKAGES += \
     Gestures
