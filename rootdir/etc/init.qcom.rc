@@ -973,10 +973,11 @@ service batt_health /system/bin/batt_health
     group mot_pwric cache net_admin log
     disabled
 
-service charge_only_mode /system/bin/charge_only_mode
+service charger /charger
     user root
     group graphics system input
-    disabled
+    critical
+    seclabel u:r:healthd:s0
 
 service ftmipcd /system/bin/ftmipcd
     user radio
@@ -1166,6 +1167,15 @@ on charger
     load_all_props
     setprop persist.sys.usb.config mass_storage
     write /sys/class/leds/charging/trigger "battery-full"
+    # Low power mode
+    write /sys/devices/system/cpu/cpu1/online 0
+    write /sys/devices/system/cpu/cpu2/online 0
+    write /sys/devices/system/cpu/cpu3/online 0
+    write /sys/devices/system/cpu/cpu4/online 0
+    write /sys/devices/system/cpu/cpu5/online 0
+    write /sys/devices/system/cpu/cpu6/online 0
+    write /sys/devices/system/cpu/cpu7/online 0
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor powersave
 
     trigger early-fs
     trigger fs
@@ -1177,6 +1187,4 @@ on charger
 
 on moto-charger
     setprop ro.board.platform msm8952
-    start charge_only_mode
-    start batt_health
-    start thermal-com
+    start charger
