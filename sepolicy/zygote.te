@@ -1,0 +1,3 @@
+allow zygote zygote_tmpfs:file execute;
+allow zygote zygote:process execmem;
+allow zygote ashmem_device:chr_file execute;

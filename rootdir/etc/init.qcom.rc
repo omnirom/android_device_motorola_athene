@@ -912,7 +912,7 @@ service qseeproxydaemon /system/vendor/bin/qseeproxydaemon
 
 # Start Sensor daemon
 service sensors /system/bin/motosh boot
-    seclabel u:r:sensors:s0
+    seclabel u:r:sensor_hub:s0
     class late_start
     user compass
     group compass misc input
@@ -932,6 +932,7 @@ service mmi-laser-sh  /init.mmi.laser.sh
     disabled
 
 service mmi-touch-sh /system/bin/sh /init.mmi.touch.sh
+    seclabel u:r:mmi_touch:s0
     class core
     user root
     oneshot
