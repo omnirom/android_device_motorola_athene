@@ -19,6 +19,7 @@ package com.gestures.settings.device;
 import android.app.AlertDialog;
 import android.app.NotificationManager;
 import android.os.Bundle;
+import android.os.SystemProperties;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -34,8 +35,11 @@ import com.gestures.settings.device.FileUtils;
 
 public class TouchscreenGesturePreferenceFragment extends PreferenceFragment {
     private static final String CATEGORY_AMBIENT_DISPLAY = "ambient_display_key";
+    private static final String CATEGORY_FINGER_PRINT = "fp_key";
     private SwitchPreference mFlipPref;
     private NotificationManager mNotificationManager;
+    private static boolean mFpsAvailable =
+            SystemProperties.getBoolean("ro.hw.fps", false);
     private boolean mFlipClick = false;
 
     @Override
@@ -43,8 +47,13 @@ public class TouchscreenGesturePreferenceFragment extends PreferenceFragment {
         addPreferencesFromResource(R.xml.gesture_panel);
         PreferenceCategory ambientDisplayCat = (PreferenceCategory)
                 findPreference(CATEGORY_AMBIENT_DISPLAY);
+        PreferenceCategory fingerPrintCat = (PreferenceCategory)
+                findPreference(CATEGORY_FINGER_PRINT);
         if (ambientDisplayCat != null) {
             ambientDisplayCat.setEnabled(ActionsSettings.isDozeEnabled(getActivity().getContentResolver()));
+        }
+        if (fingerPrintCat != null) {
+            fingerPrintCat.setEnabled(mFpsAvailable);
         }
         mNotificationManager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
         mFlipPref = (SwitchPreference) findPreference("gesture_flip_to_mute");
