@@ -1,3 +1,4 @@
 allow priv_app exfat:dir rw_dir_perms;
 allow priv_app device:dir r_dir_perms;
 allow priv_app device:file r_file_perms;
+allow priv_app cache_private_backup_file:dir r_dir_perms;
