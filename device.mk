@@ -105,6 +105,7 @@ PRODUCT_COPY_FILES += \
 # Camera
 PRODUCT_PACKAGES += \
     libbson \
+    camera.msm8952 \
     SnapdragonCamera
 
 # Charger
