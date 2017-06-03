@@ -17,7 +17,6 @@ Battery | Li-Ion 3000mAh battery
 Display | 1080 x 1920 pixels, 5.5 inches (~401 ppi pixel density)
 Camera  | 16 MP, autofocus, LED flash
 
-Copyright 2016 - The CyanogenMod Project.
-Copyright 2017 - The LineageOS Project.
+Copyright 2017 - The OmniROM Project.
 
 ![Moto G4 Plus](http://images.fonearena.com/blog/wp-content/uploads/2016/05/Moto-G4-Plus_fonearena-16-1024x742.jpg "Moto G4 Plus")
