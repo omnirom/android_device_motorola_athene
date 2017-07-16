@@ -14,26 +14,42 @@
  * limitations under the License.
  */
 
-#include <cutils/log.h>
+#include <cutils/properties.h>
+#include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 #include <errno.h>
 #include <fcntl.h>
 #include <pthread.h>
+#include <math.h>
+
+#define LOG_TAG "Athene-liblight"
+#include <utils/Log.h>
+
+#include <sys/ioctl.h>
+#include <sys/types.h>
 
 #include <hardware/lights.h>
 
 /******************************************************************************/
 
+#define LED_LIGHT_OFF 0
+#define LED_LIGHT_ON 255
+
 static pthread_once_t g_init = PTHREAD_ONCE_INIT;
 static pthread_mutex_t g_lock = PTHREAD_MUTEX_INITIALIZER;
+
 static struct light_state_t g_battery;
 static struct light_state_t g_notification;
 
 char const*const LCD_FILE
         = "/sys/class/leds/lcd-backlight/brightness";
 
-char const*const LED_FILE
+char const*const CHARGING_LED_FILE
+        = "/sys/class/leds/charging/brightness";
+
+char const*const BLINK_LED_FILE
         = "/sys/class/leds/charging/blink";
 
 /**
@@ -105,7 +121,7 @@ rgb_to_brightness(struct light_state_t const* state)
 }
 
 static int
-set_light_backlight(__attribute__((unused)) struct light_device_t* dev,
+set_light_backlight(struct light_device_t* dev,
         struct light_state_t const* state)
 {
     int err = 0;
@@ -117,43 +133,69 @@ set_light_backlight(__attribute__((unused)) struct light_device_t* dev,
 }
 
 static int
-handle_speaker_battery_locked()
+set_speaker_light_locked(struct light_device_t* dev,
+        struct light_state_t const* state)
+{
+    unsigned long onMS, offMS;
+    char blink_string[PAGE_SIZE];
+
+    if (!dev) {
+        return -1;
+    }
+
+    switch (state->flashMode) {
+        case LIGHT_FLASH_TIMED:
+            onMS = state->flashOnMS;
+            offMS = state->flashOffMS;
+            break;
+        case LIGHT_FLASH_NONE:
+        default:
+            onMS = 0;
+            offMS = 0;
+            break;
+    }
+
+    sprintf(blink_string, "%lu,%lu", onMS, offMS);
+    return write_str(BLINK_LED_FILE, blink_string);
+}
+
+static int
+handle_speaker_battery_locked(struct light_device_t *dev)
 {
     int err = 0;
     //We want to see the notifications if there is any
     if (is_lit(&g_notification)) {
-        //set blinking 1000ms ON and 500ms OFF as default
-        err = write_str(LED_FILE, "1000,500");
+        err = set_speaker_light_locked(dev, &g_notification);
     }else if (is_lit(&g_battery)) {
         //Turn on the led
-        err = write_str(LED_FILE, "1000,0");
+        err = write_str(BLINK_LED_FILE, "1000,0");
     }else {
         //Nothing to notify.turning led off
-        err = write_str(LED_FILE, "0,0");
+        err = write_str(BLINK_LED_FILE, "0,0");
     }
     return err;
 }
 
 static int
-set_light_battery(__attribute__((unused)) struct light_device_t* dev,
+set_light_battery(struct light_device_t* dev,
         struct light_state_t const* state)
 {
     int err = 0;
     pthread_mutex_lock(&g_lock);
     g_battery = *state;
-    err = handle_speaker_battery_locked();
+    err = handle_speaker_battery_locked(dev);
     pthread_mutex_unlock(&g_lock);
     return err;
 }
 
 static int
-set_light_notifications(__attribute__((unused)) struct light_device_t* dev,
+set_light_notifications(struct light_device_t* dev,
         struct light_state_t const* state)
 {
     int err = 0;
     pthread_mutex_lock(&g_lock);
     g_notification = *state;
-    err = handle_speaker_battery_locked();
+    err = handle_speaker_battery_locked(dev);
     pthread_mutex_unlock(&g_lock);
     return err;
 }
