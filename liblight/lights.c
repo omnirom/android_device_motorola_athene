@@ -14,28 +14,16 @@
  * limitations under the License.
  */
 
-#include <cutils/properties.h>
-#include <stdint.h>
+#include <cutils/log.h>
 #include <stdlib.h>
 #include <string.h>
-#include <unistd.h>
 #include <errno.h>
 #include <fcntl.h>
 #include <pthread.h>
-#include <math.h>
-
-#define LOG_TAG "Athene-liblight"
-#include <utils/Log.h>
-
-#include <sys/ioctl.h>
-#include <sys/types.h>
 
 #include <hardware/lights.h>
 
 /******************************************************************************/
-
-#define LED_LIGHT_OFF 0
-#define LED_LIGHT_ON 255
 
 static pthread_once_t g_init = PTHREAD_ONCE_INIT;
 static pthread_mutex_t g_lock = PTHREAD_MUTEX_INITIALIZER;
@@ -121,7 +109,7 @@ rgb_to_brightness(struct light_state_t const* state)
 }
 
 static int
-set_light_backlight(struct light_device_t* dev,
+set_light_backlight(__attribute__((unused)) struct light_device_t* dev,
         struct light_state_t const* state)
 {
     int err = 0;
