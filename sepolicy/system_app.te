@@ -1,1 +1,5 @@
 allow system_app sysfs_homebutton:file rw_file_perms;
+# Needed for exFAT
+allow system_app fuse_device:dir rw_dir_perms;
+allow system_app fuse_device:file rw_file_perms;
+allow system_app fuse_device:filesystem { getattr };

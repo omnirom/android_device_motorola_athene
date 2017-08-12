@@ -1,0 +1,4 @@
+# Needed for exFAT
+allow untrusted_app fuse_device:file { rw_file_perms };
+allow untrusted_app fuse_device:dir { rw_dir_perms };
+allow untrusted_app fuse_device:filesystem { getattr };
