@@ -118,7 +118,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libbson \
     camera.msm8952 \
-    SnapdragonCamera
+    SnapdragonCamera \
+    camera.device@3.2-impl \
+    android.hardware.camera.provider@2.4-impl
 
 # Charger
 PRODUCT_PACKAGES += \
