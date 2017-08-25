@@ -866,14 +866,12 @@ service ril-daemon /system/bin/rild
     socket rild-debug stream 660 radio system
     socket cutback stream 660 media radio
     user root
-    group radio cache inet misc audio sdcard_rw sensors diag log net_raw diag wakelock
+    group radio cache inet misc audio sdcard_rw sensors diag log net_raw wakelock
 
-service ril-daemon1 /system/bin/rild -c 2
+service ril-daemon1 /vendor/bin/hw/rild -c 2
     class main
-    socket rild2 stream 660 root radio
-    socket rild-debug2 stream 660 radio system
     user root
-    group radio cache inet misc audio sdcard_rw sensors diag log net_raw diag wakelock
+    group radio cache inet misc audio sdcard_rw sensors diag log net_raw wakelock
     disabled
 
 service rild1-wrapper /system/bin/sh /system/etc/init.qcom.ril.sh
