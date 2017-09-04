@@ -73,7 +73,6 @@ PRODUCT_PACKAGES += \
     libaudio-resampler \
 
 PRODUCT_PACKAGES += \
-
     libqcomvisualizer \
     libqcomvoiceprocessing \
     libqcomvoiceprocessingdescriptors \
@@ -168,7 +167,7 @@ PRODUCT_PACKAGES += \
 # GPS
 PRODUCT_PACKAGES += \
     gps.msm8952 \
-    libgnsspps
+    libgnsspps \
     libshims_get_process_name
 
 PRODUCT_COPY_FILES += \
