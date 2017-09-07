@@ -15,7 +15,7 @@
     "remote": "omnirom",
     "repository": "android_device_motorola_athene",
     "target_path": "device/motorola/athene",
-    "revision": "android-7.1"
+    "revision": "android-8.0"
   },
   {
     "remote": "omnirom",
@@ -81,6 +81,6 @@
     "remote": "omnirom",
     "repository": "android_system_qcom",
     "target_path": "system/qcom",
-    "revision": "android-7.1"
+    "revision": "android-8.0"
   }
 ]
