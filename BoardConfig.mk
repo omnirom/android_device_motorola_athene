@@ -191,6 +191,8 @@ TARGET_USE_SDCLANG := true
 #BOARD_SEPOLICY_DIRS += \
 #    device/motorola/athene/sepolicy
 
+DEVICE_MANIFEST_FILE := $(LOCAL_PATH)/configs/manifest.xml
+
 # Wifi
 BOARD_HAS_QCOM_WLAN := true
 BOARD_HAS_QCOM_WLAN_SDK := true
