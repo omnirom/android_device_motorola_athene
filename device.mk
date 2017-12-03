@@ -150,6 +150,8 @@ PRODUCT_PACKAGES += \
     android.hardware.memtrack@1.0-service \
     hwcomposer.msm8952 \
     memtrack.msm8952 \
+    copybit.msm8952 \
+    liboverlay \
     libgenlock
 
 # RenderScript HAL
