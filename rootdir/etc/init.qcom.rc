@@ -640,7 +640,7 @@ on property:vold.decrypt=trigger_restart_framework
     start config_bluetooth
     start wcnss-service
 
-service cnd /system/bin/cnd
+service cnd /system/vendor/bin/cnd
     class main
     socket cnd stream 660 root inet
     group root wakelock
@@ -651,25 +651,25 @@ service dpmd /system/bin/dpmd
     socket dpmd stream 660 root system
     writepid /dev/cpuset/system-background/tasks
 
-service config_bt_addr /system/bin/btnvtool -O
+service config_bt_addr /system/vendor/bin/btnvtool -O
     class core
     user bluetooth
     group bluetooth radio
     oneshot
 
-service irsc_util /system/bin/irsc_util "/etc/sec_config"
+service irsc_util /system/vendor/bin/irsc_util "/etc/sec_config"
     class main
     user root
     oneshot
 
-service imsqmidaemon /system/bin/imsqmidaemon
+service imsqmidaemon /system/vendor/bin/imsqmidaemon
     class main
     user system
     socket ims_qmid stream 0660 system radio
     group radio log diag
     writepid /dev/cpuset/system-background/tasks
 
-service imsdatadaemon /system/bin/imsdatadaemon
+service imsdatadaemon /system/vendor/bin/imsdatadaemon
     class main
     user system
     socket ims_datad stream 0660 system radio
@@ -680,13 +680,13 @@ service imsdatadaemon /system/bin/imsdatadaemon
 on property:sys.ims.QMI_DAEMON_STATUS=1
     start imsdatadaemon
 
-service rmt_storage /system/bin/rmt_storage
+service rmt_storage /system/vendor/bin/rmt_storage
     class core
     user root
     group system wakelock
     writepid /dev/cpuset/system-background/tasks
 
-service tftp_server /system/bin/tftp_server
+service tftp_server /system/vendor/bin/tftp_server
     class main
     user root
     writepid /dev/cpuset/system-background/tasks
@@ -728,7 +728,7 @@ on property:bluetooth.hciattach=true
 on property:bluetooth.hciattach=false
     setprop bluetooth.status off
 
-service bt-dun /system/bin/dun-server /dev/smd7 /dev/rfcomm0
+service bt-dun /system/vendor/bin/dun-server /dev/smd7 /dev/rfcomm0
     class late_start
     user bluetooth
     group bluetooth net_bt_admin inet
@@ -742,7 +742,7 @@ service btsnoop /system/bin/btsnoop
    disabled
    oneshot
 
-service port-bridge /system/bin/port-bridge /dev/mhi_pipe_32 /dev/ttyGS0
+service port-bridge /system/vendor/bin/port-bridge /dev/mhi_pipe_32 /dev/ttyGS0
     class main
     user radio system
     group radio system inet
@@ -750,13 +750,13 @@ service port-bridge /system/bin/port-bridge /dev/mhi_pipe_32 /dev/ttyGS0
     oneshot
 
 # QMUX must be in multiple groups to support external process connections
-service qmuxd /system/bin/qmuxd
+service qmuxd /system/vendor/bin/qmuxd
     class main
     user root
     group radio audio bluetooth gps nfc diag wakelock
     writepid /dev/cpuset/system-background/tasks
 
-service netmgrd /system/bin/netmgrd
+service netmgrd /system/vendor/bin/netmgrd
     class main
     user root
     group radio system wakelock
@@ -790,7 +790,7 @@ on property:ro.use_data_netmgrd=false
 on property:ro.data.large_tcp_window_size=true
     write /proc/sys/net/ipv4/tcp_adv_win_scale  2
 
-service p2p_supplicant /system/bin/wpa_supplicant \
+service p2p_supplicant /vendor/bin/hw/wpa_supplicant \
     -ip2p0 -Dnl80211 -c/data/misc/wifi/p2p_supplicant.conf \
     -I/system/etc/wifi/p2p_supplicant_overlay.conf -N \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
@@ -836,16 +836,16 @@ service ptt_ffbm /system/bin/ptt_socket_app -f -d
     disabled
     oneshot
 
-service cnss_diag /system/bin/cnss_diag -q -f
+service cnss_diag /system/vendor/bin/cnss_diag -q -f
     class late_start
     user root
     group root
     oneshot
 
-service cnss-daemon /system/bin/cnss-daemon -n -l
+service cnss-daemon /system/vendor/bin/cnss-daemon -n -l
     class late_start
 
-service loc_launcher /system/bin/loc_launcher
+service loc_launcher /system/vendor/bin/loc_launcher
     #loc_launcher will start as root and set its uid to gps
     class late_start
     group gps inet net_raw oem_2950 net_admin wifi
@@ -857,7 +857,7 @@ on property:hw.fm.init=1
 on property:hw.fm.init=0
     write /sys/module/radio_iris_transport/parameters/fmsmd_set 0
 
-service atfwd /system/bin/ATFWD-daemon
+service atfwd /system/vendor/bin/ATFWD-daemon
     class late_start
     user system
     group system radio
@@ -919,8 +919,8 @@ service qseeproxydaemon /system/vendor/bin/qseeproxydaemon
     group system
 
 # Start Sensor daemon
-service sensors /system/bin/motosh boot
-    seclabel u:r:sensor_hub:s0
+service sensors /system/vendor/bin/motosh boot
+    #seclabel u:r:sensor_hub:s0
     class late_start
     user compass
     group compass misc input
@@ -976,7 +976,7 @@ on property:hw.touch.status="dead"
 on property:hw.touch.status="ready"
     # start touch-ready-sh
 
-service batt_health /system/bin/batt_health
+service batt_health /system/vendor/bin/batt_health
     class late_start
     user mot_pwric
     group mot_pwric cache net_admin log
@@ -986,9 +986,9 @@ service charger /charger
     user root
     group graphics system input
     critical
-    seclabel u:r:healthd:s0
+    #seclabel u:r:healthd:s0
 
-service ftmipcd /system/bin/ftmipcd
+service ftmipcd /system/vendor/bin/ftmipcd
     user radio
     group radio net_raw inet diag
     disabled
@@ -1033,7 +1033,7 @@ on property:ro.debuggable=1
     # enable group read/write to /dev/log/kernel
     chmod 0660 /dev/log/kernel
 
-service hw_revs /system/bin/hardware_revisions.sh
+service hw_revs /system/vendor/bin/hardware_revisions.sh
     class late_start
     user system
     group system
@@ -1066,7 +1066,7 @@ on property:sys.wifi.tethering=true
     write /sys/class/net/wlan0/queues/rx-2/rps_cpus ${sys.usb.rps_mask}
     write /sys/class/net/wlan0/queues/rx-3/rps_cpus ${sys.usb.rps_mask}
 
-service fingerprintd /system/bin/fingerprintd
+service fingerprintd /system/vendor/bin/fingerprintd
     class late_start
     user system
     group input
@@ -1082,7 +1082,7 @@ service setup_shutdown /system/bin/setup_shutdown.sh
    oneshot
 
 #start camera server as daemon
-service qcamerasvr /system/bin/mm-qcamera-daemon
+service qcamerasvr /system/vendor/bin/mm-qcamera-daemon
    class late_start
    user camera
    group camera system inet input graphics
@@ -1095,18 +1095,18 @@ on property:persist.usb.chgdisabled=1
 on property:persist.usb.chgdisabled=0
     write /sys/class/power_supply/battery/charging_enabled 1
 
-service adsprpcd /system/bin/adsprpcd
+service adsprpcd /system/vendor/bin/adsprpcd
     class main
     user media
     group media
 
-service per_mgr /system/bin/pm-service
+service per_mgr /system/vendor/bin/pm-service
     class core
     user system
     group system net_raw
     writepid /dev/cpuset/system-background/tasks
 
-service per_proxy /system/bin/pm-proxy
+service per_proxy /system/vendor/bin/pm-proxy
     class core
     user system
     group system
@@ -1137,7 +1137,7 @@ service wcnss-service /system/bin/wcnss_service
     group system wifi radio
     oneshot
 
-service qseecomd /system/bin/qseecomd
+service qseecomd /system/vendor/bin/qseecomd
     class core
     user root
     group root
@@ -1159,13 +1159,13 @@ service thermal-engine /system/vendor/bin/thermal-engine
     group root
     writepid /dev/cpuset/system-background/tasks
 
-service time_daemon /system/bin/time_daemon
+service time_daemon /system/vendor/bin/time_daemon
     class late_start
     user root
     group root
     writepid /dev/cpuset/system-background/tasks
 
-service audiod /system/bin/audiod
+service audiod /system/vendor/bin/audiod
     class late_start
     user system
     group system
