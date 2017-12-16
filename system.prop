@@ -251,6 +251,9 @@ ro.am.reschedule_service=true
 # XLAT
 persist.net.doxlat=true
 
+# sdcardfs disable gid derivation
+ro.sys.sdcardfs.gid_derivation.enable=false
+
 #
 # ADDITIONAL_BUILD_PROPERTIES
 #
