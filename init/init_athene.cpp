@@ -28,11 +28,14 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <android-base/properties.h>
+#include <android-base/logging.h>
 
-#include "vendor_init.h"
 #include "property_service.h"
 #include "log.h"
 #include "util.h"
+
+namespace android {
+namespace init {
 
 static void num_sims(void);
 static void target_ram(void);
@@ -168,3 +171,5 @@ static void num_sims(void) {
         property_set("persist.radio.multisim.config", "");
     }
 }
+}  // namespace init
+}  // namespace android
