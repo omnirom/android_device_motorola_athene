@@ -58,7 +58,7 @@ persist.ims.disableIMSLogs=0
 persist.radio.sw_mbn_update=1
 persist.radio.custom_ecc=1
 mdc_initial_max_retry=10
-persist.radio.sar_sensor=0
+persist.radio.sar_sensor=1
 persist.radio.call.audio.output=0
 ro.telephony.call_ring.multiple=false
 
