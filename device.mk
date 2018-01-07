@@ -118,7 +118,6 @@ PRODUCT_PACKAGES += \
 # Camera
 PRODUCT_PACKAGES += \
     libbson \
-    camera.msm8952 \
     libshims_camera \
     SnapdragonCamera \
     camera.device@3.2-impl \
