@@ -304,6 +304,11 @@ PRODUCT_PACKAGES += \
     libxml2
 
 PRODUCT_PACKAGES += \
+    android.hardware.radio@1.0 \
+    android.hardware.radio@1.1 \
+    android.hardware.radio.deprecated@1.0
+
+PRODUCT_PACKAGES += \
     rild_socket
 
 PRODUCT_COPY_FILES += \
