@@ -18,6 +18,9 @@ on boot
     # Enable sched boost
     write /proc/sys/kernel/sched_boost 1
 
+    # Use CFQ scheduler
+    setprop sys.io.scheduler "cfq"
+
 on enable-low-power
     # HMP scheduler settings
     write /proc/sys/kernel/sched_window_stats_policy 3
@@ -173,4 +176,3 @@ on property:init.svc.recovery=running
 
 on property:dev.bootcomplete=1
     write /sys/block/dm-0/queue/read_ahead_kb 512
-    setprop sys.io.scheduler "bfq"
