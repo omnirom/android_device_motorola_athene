@@ -134,6 +134,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     camera.disable_treble=true
 
+# Disable Vulkan
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.graphics.vulkan.disable=true
+
 # Charger
 PRODUCT_PACKAGES += \
     omni_charger_res_images \
