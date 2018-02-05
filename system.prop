@@ -61,6 +61,7 @@ mdc_initial_max_retry=10
 persist.radio.sar_sensor=1
 persist.radio.call.audio.output=0
 ro.telephony.call_ring.multiple=false
+persist.radio.aosp_usr_pref_sel=true
 
 # Display
 debug.sf.hw=1
