@@ -1107,6 +1107,10 @@ service per_proxy /system/vendor/bin/pm-proxy
 on property:init.svc.per_mgr=running
     start per_proxy
 
+on property:init.svc.qcamerasvr=running
+    stop cameraserver
+    start cameraserver
+
 on property:sys.shutdown.requested=*
     stop per_proxy
 
