@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (C) 2013 The OmniROM Project
+  parts by Copyright 2013, The CyanogenMod Project
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 2 of the License, or
+  (at your option) any later version.
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ -->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Lanterna</string>
+    <string name="about_title">Sobre</string>
+    <string name="about_close">Fechar</string>
+    <string name="description">Este programa manipula o LED da câmera.\n</string>
+    <string name="warning">Aviso: Deixar o LED ativo por muito tempo pode provocar superaquecimento.\n\nBrilho máximo &#8220;sempre ativo&#8221; foi testado por &#189; hora, mas há o risco de danificar o LED.\n</string>
+    <string name="license">Código original da Lanterna do Nexus One por Ben Buxton, liberado sob a licença GPL, v3.\nhttp://n1torch.googlecode.com/\n\nModificado para OmniROM por Max Weninger</string>
+    <string name="warning_label">Aviso</string>
+    <string name="brightwarn">Brilho máximo foi testado com sucesso por &#189; hora de operação, mas deixou o LED muito aquecido, começando a oscilar (temporariamente) aos 45 min. Efeitos de uso longo são desconhecidos.\n\nClique em &#8220;Aceito&#8221; se você deseja usá-lo por sua conta e risco.</string>
+    <string name="brightwarn_negative">Não, obrigado</string>
+    <string name="brightwarn_accept">Aceito</string>
+    <string name="label_on">Ligado</string>
+    <string name="label_off">Desligado</string>
+    <string name="label_high">Alto</string>
+    <string name="label_strobe">Piscar</string>
+    <string name="label_sos">S.O.S.</string>
+    <string name="settings">Configurações</string>
+    <string name="about">Sobre</string>
+    <string name="widget_options">Configurações do widget</string>
+    <string name="setting_title_common">Comum</string>
+    <string name="setting_fullscreen">Tela cheia</string>
+    <string name="setting_bright">Brilho</string>
+    <string name="setting_sos">S.O.S.</string>
+    <string name="setting_strobe">Piscar</string>
+    <string name="setting_frequency_title">Frequência</string>
+    <string name="setting_frequency_dialog">Frequência</string>
+    <string name="setting_frequency_hz"> Hz</string>
+    <string name="setting_add_widget">Adicionar widget</string>
+    <string name="not_torch_title">Lanterna ligada</string>
+    <string name="not_torch_toggle">Desligar lanterna</string>
+</resources>

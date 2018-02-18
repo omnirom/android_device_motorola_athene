@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (C) 2013 The OmniROM Project
+  parts by Copyright 2013, The CyanogenMod Project
+ 
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 2 of the License, or
+  (at your option) any later version.
+ 
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+ 
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ -->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Torch</string>
+    <string name="about_title">About</string>
+    <string name="about_close">Close</string>
+
+    <string name="description">This program manipulates the camera LED.\n</string>
+    <string name="warning">Warning: Leaving the LED on for a long time might overheat it.\n\nFull brightness &#8220;always on&#8221; has been tested running for &#189; hr, but there is the risk this could damage the LED.\n</string>
+    <string name="license">Original code from Nexus One Torch by Ben Buxton, released under the GPL, v3.\nhttp://n1torch.googlecode.com/\n\nModified for OmniRom by Max Weninger</string>
+    <string name="warning_label">Warning</string>
+    <string name="brightwarn">Full brightness has been tested successfully for &#189; hour of operation, but got quite hot, and started flickering (temporarily) at 45 mins. Long term effects are unknown.\n\nClick &#8220;Accept&#8221; if you want to use it at your own risk.</string>
+    <string name="brightwarn_negative">No thanks</string>
+    <string name="brightwarn_accept">Accept</string>
+
+    <string name="label_on">On</string>
+    <string name="label_off">Off</string>
+    <string name="label_high">High</string>
+    <string name="label_strobe">Strobe</string>
+    <string name="label_sos">S.O.S</string>
+    
+    <string name="settings">Settings</string>
+    <string name="about">About</string>
+    <string name="widget_options">Widget options</string>
+    <string name="setting_title_common">Common</string>
+    <string name="setting_fullscreen">Fullscreen</string>
+    <string name="setting_bright">Bright</string>
+    <string name="setting_sos">S.O.S</string>
+    <string name="setting_strobe">Strobe flash</string>
+    <string name="setting_frequency_title">Strobe frequency</string>
+    <string name="setting_frequency_dialog">Frequency</string>
+    <string name="setting_frequency_hz"> Hz</string>
+    <string name="setting_add_widget">Add widget</string>
+    <string name="setting_keep_screen_on">Keep screen on</string>
+    <string name="not_torch_title">Torch on</string>
+    <string name="not_torch_toggle">Turn torch off</string>
+
+</resources>
