@@ -62,6 +62,8 @@ persist.radio.sar_sensor=1
 persist.radio.call.audio.output=0
 ro.telephony.call_ring.multiple=false
 persist.radio.aosp_usr_pref_sel=true
+ril.ecclist=112,911,999,*911,#911
+ril.ecclist1=112,911,999,*911,#911,991,994
 
 # Display
 debug.sf.hw=1
