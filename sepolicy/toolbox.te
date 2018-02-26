@@ -1,4 +1,5 @@
 allow toolbox init:fifo_file { write getattr read ioctl };
+allow toolbox hw_revs_data_file:file { getattr setattr };
 allow toolbox persist_file:dir search;
 allow toolbox persist_file:file getattr;
 allow toolbox property_socket:sock_file write;

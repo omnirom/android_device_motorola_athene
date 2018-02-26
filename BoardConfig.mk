@@ -192,10 +192,11 @@ BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"
 TARGET_USE_SDCLANG := true
 
 # SELinux
-#include device/qcom/sepolicy/sepolicy.mk
+include device/qcom/sepolicy/sepolicy.mk
 # MUST NOT USE LOCAL_PATH
-#BOARD_SEPOLICY_DIRS += \
-#    device/motorola/athene/sepolicy
+BOARD_SEPOLICY_DIRS += \
+    device/motorola/athene/sepolicy
+include vendor/omni/sepolicy/sepolicy.mk
 
 DEVICE_MANIFEST_FILE := $(LOCAL_PATH)/configs/manifest.xml
 

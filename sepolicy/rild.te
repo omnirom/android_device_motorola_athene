@@ -1,12 +1,25 @@
+binder_call(rild, servicemanager);
+binder_call(rild, audioserver_service);
+binder_call(rild, system_server);
+set_prop(rild, diag_prop);
+
+allow rild audioserver_service:service_manager find;
 allow rild cutback_data_file:dir rw_dir_perms;
 allow rild cutback_data_file:sock_file create_file_perms;
 allow rild fsg_file:dir { search read open };
 allow rild fsg_file:file r_file_perms;
 allow rild fsg_file:lnk_file read;
+allow rild nv_data_file:dir rw_dir_perms;
+allow rild nv_data_file:file create_file_perms;
+allow rild per_mgr_service_old:service_manager { add find };
 allow rild persist_file:dir { open read search write };
 allow rild persist_file:file { getattr open read write };
+allow rild radio_data_file:dir rw_dir_perms;
+allow rild radio_data_file:file create_file_perms;
+allow rild rild_exec:file execute_no_trans;
 allow rild sensorservice_service:service_manager find;
 allow rild system_data_file:sock_file { create unlink setattr };
 allow rild system_data_file:dir { write add_name remove_name };
 allow rild system_server:unix_stream_socket { read write };
 allow rild unlabeled:dir { getattr open read };
+allow rild unlabeled:file { getattr open read };

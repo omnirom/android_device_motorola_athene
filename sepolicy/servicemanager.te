@@ -1,0 +1,19 @@
+allow servicemanager atfwd:dir search;
+allow servicemanager atfwd:file { open read };
+allow servicemanager atfwd:process getattr;
+
+allow servicemanager mm-qcamerad:dir search;
+allow servicemanager mm-qcamerad:file { open read };
+allow servicemanager mm-qcamerad:process getattr;
+
+allow servicemanager per_mgr:dir search;
+allow servicemanager per_mgr:file { open read };
+allow servicemanager per_mgr:process getattr;
+
+allow servicemanager qseeproxy:dir search;
+allow servicemanager qseeproxy:file { open read };
+allow servicemanager qseeproxy:process getattr;
+
+allow servicemanager rild:dir search;
+allow servicemanager rild:file { open read };
+allow servicemanager rild:process getattr;

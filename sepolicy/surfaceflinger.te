@@ -1,0 +1,2 @@
+binder_call(surfaceflinger, hwservicemanager)
+set_prop(surfaceflinger, hw_cabl_prop);

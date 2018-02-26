@@ -663,7 +663,7 @@ service dpmd /system/bin/dpmd
     socket dpmd stream 660 root system
     writepid /dev/cpuset/system-background/tasks
 
-service config_bt_addr /system/vendor/bin/btnvtool -O
+service config_bt_addr /system/vendor/bin/sh /system/vendor/bin/btnvtool -O
     class core
     user bluetooth
     group bluetooth radio
@@ -721,13 +721,13 @@ service hci_filter_root /system/bin/wcnss_filter
     group bluetooth diag system
     disabled
 
-service config_bluetooth /system/bin/sh /init.qcom.bt.sh "onboot"
+service config_bluetooth /system/vendor/bin/sh /init.qcom.bt.sh "onboot"
     class core
     user bluetooth
     group bluetooth system
     oneshot
 
-service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
+service hciattach /system/vendor/bin/sh /system/etc/init.qcom.bt.sh
     class late_start
     user bluetooth
     group bluetooth net_bt_admin
@@ -887,7 +887,7 @@ service ril-daemon1 /vendor/bin/hw/rild -c 2
     group radio cache inet misc audio log readproc wakelock qcom_diag net_raw
     capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
 
-service rild1-wrapper /system/bin/sh /system/etc/init.qcom.ril.sh
+service rild1-wrapper /system/vendor/bin/sh /system/etc/init.qcom.ril.sh
     class late_start
     user root
     group root
@@ -926,51 +926,51 @@ service qseeproxydaemon /system/vendor/bin/qseeproxydaemon
 
 # Start Sensor daemon
 service sensors /system/vendor/bin/motosh boot
-    #seclabel u:r:sensor_hub:s0
+    seclabel u:r:sensor_hub:s0
     class late_start
     user compass
     group compass misc input
     oneshot
 
-service mmi-boot-sh /init.mmi.boot.sh
-    #seclabel u:r:mmi-boot-sh:s0
+service mmi-boot-sh /system/vendor/bin/sh /init.mmi.boot.sh
+    seclabel u:r:mmi-boot-sh:s0
     class core
     user root
     oneshot
 
-service mmi-laser-sh  /init.mmi.laser.sh
-    #seclabel u:r:mmi-laser-sh:s0
-    class core
-    user root
-    oneshot
-    disabled
-
-service mmi-touch-sh /system/bin/sh /init.mmi.touch.sh
-    #seclabel u:r:mmi_touch:s0
-    class core
-    user root
-    oneshot
-
-service oem-hw-sh /init.oem.hw.sh
-    #seclabel u:r:oem-hw-sh:s0
+service mmi-laser-sh /system/vendor/bin/sh /init.mmi.laser.sh
+    seclabel u:r:mmi-laser-sh:s0
     class core
     user root
     oneshot
     disabled
 
-service touch-dead-sh /init.oem.hw.sh -f
+service mmi-touch-sh /system/vendor/bin/sh /init.mmi.touch.sh
+    seclabel u:r:mmi_touch:s0
+    class core
+    user root
+    oneshot
+
+service oem-hw-sh /system/vendor/bin/sh /init.oem.hw.sh
+    seclabel u:r:oem-hw-sh:s0
+    class core
+    user root
+    oneshot
+    disabled
+
+service touch-dead-sh /system/vendor/bin/sh /init.oem.hw.sh -f
     class main
     user root
     oneshot
     disabled
 
-service touch-ready-sh /init.oem.hw.sh -r
+service touch-ready-sh /system/vendor/bin/sh /init.oem.hw.sh -r
     class main
     user root
     oneshot
     disabled
 
-service oem-hw-config-sh /init.oem.hw.sh -p
+service oem-hw-config-sh /system/vendor/bin/sh /init.oem.hw.sh -p
     class main
     user root
     oneshot
@@ -1033,7 +1033,7 @@ on property:ro.debuggable=1
     # enable group read/write to /dev/log/kernel
     chmod 0660 /dev/log/kernel
 
-service hw_revs /system/vendor/bin/hardware_revisions.sh
+service hw_revs /system/vendor/bin/sh /system/vendor/bin/hardware_revisions.sh
     class late_start
     user system
     group system

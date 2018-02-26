@@ -1,3 +1,4 @@
 allow thermal-engine device:chr_file ioctl;
 allow thermal-engine self:capability sys_nice;
 allow thermal-engine thermal_device:chr_file { read write open };
+allow thermal-engine socket_device:sock_file { create_file_perms };

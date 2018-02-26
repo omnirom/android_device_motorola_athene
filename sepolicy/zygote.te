@@ -1,3 +1,4 @@
-allow zygote zygote_tmpfs:file execute;
-allow zygote zygote:process execmem;
-allow zygote ashmem_device:chr_file execute;
+allow zygote self:capability sys_nice;
+#allow zygote zygote_tmpfs:file execute;
+#allow zygote zygote:process execmem;
+#allow zygote ashmem_device:chr_file execute;
