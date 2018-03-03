@@ -986,7 +986,8 @@ service charger /charger
     user root
     group graphics system input
     critical
-    #seclabel u:r:healthd:s0
+    seclabel u:r:charger:s0
+    writepid /dev/cpuset/system-background/tasks
 
 service ftmipcd /system/vendor/bin/ftmipcd
     user radio
