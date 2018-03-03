@@ -2,7 +2,7 @@ binder_call(system_server, per_mgr_service_old);
 
 allow system_server per_mgr_service_old:service_manager { add find };
 allow system_server qmuxd:unix_stream_socket connectto;
-allow system_server qmuxd_socket:dir { add_name write };
+allow system_server qmuxd_socket:dir { add_name search write };
 allow system_server qmuxd_socket:sock_file create_file_perms;
 allow system_server qti_debugfs:file r_file_perms;
 allow system_server rild:binder transfer;
