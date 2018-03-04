@@ -1067,7 +1067,7 @@ on property:sys.wifi.tethering=true
     write /sys/class/net/wlan0/queues/rx-2/rps_cpus ${sys.usb.rps_mask}
     write /sys/class/net/wlan0/queues/rx-3/rps_cpus ${sys.usb.rps_mask}
 
-service fingerprintd /system/vendor/bin/fingerprintd
+service fingerprintd /system/vendor/bin/sh /system/vendor/bin/fingerprintd
     class late_start
     user system
     group input
