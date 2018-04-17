@@ -721,7 +721,7 @@ service hci_filter_root /system/bin/wcnss_filter
     group bluetooth diag system
     disabled
 
-service config_bluetooth /system/vendor/bin/sh /init.qcom.bt.sh "onboot"
+service config_bluetooth /system/vendor/bin/sh /system/etc/init.qcom.bt.sh "onboot"
     class core
     user bluetooth
     group bluetooth system
