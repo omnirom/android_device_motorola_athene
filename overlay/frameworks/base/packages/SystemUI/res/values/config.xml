@@ -55,4 +55,7 @@
     <!-- Should "4G" be shown instead of "LTE" when the network is NETWORK_TYPE_LTE? -->
     <bool name="config_show4GForLTE">false</bool>
 
+    <!-- The CPU temperature sensor path -->
+    <string name="config_cpuTempSensor" translatable="false">/sys/class/thermal/thermal_zone11/temp</string>
+
 </resources>
