@@ -1,0 +1,2 @@
+allow mediaprovider fuse_device:dir { r_dir_perms };
+allow mediaprovider fuse_device:file { r_file_perms };
