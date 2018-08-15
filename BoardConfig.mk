@@ -53,7 +53,7 @@ ARCH_ARM_HAVE_TLS_REGISTER := true
 #TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
 
 # Kernel
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 earlyprintk androidboot.selinux=enforcing
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 earlyprintk androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_IMAGE_NAME := zImage
@@ -205,7 +205,7 @@ include device/qcom/sepolicy/sepolicy.mk
 # MUST NOT USE LOCAL_PATH
 BOARD_SEPOLICY_DIRS += \
     device/motorola/athene/sepolicy
-include vendor/omni/sepolicy/sepolicy.mk
+#include vendor/omni/sepolicy/sepolicy.mk
 
 DEVICE_MANIFEST_FILE := $(LOCAL_PATH)/configs/manifest.xml
 
