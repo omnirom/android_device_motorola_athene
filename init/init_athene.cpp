@@ -32,7 +32,7 @@
 
 #include "property_service.h"
 #include "log.h"
-#include "util.h"
+//#include "util.h"
 
 namespace android {
 namespace init {
