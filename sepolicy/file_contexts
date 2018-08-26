@@ -16,6 +16,8 @@
 
 # Camera
 /data/cam_socket[12]                                        u:object_r:camera_socket:s0
+/data/camera(/.*)?                                          u:object_r:camera_socket:s0
+/data/misc/camera/cam_socket[1-2]                           u:object_r:camera_socket:s0
 
 # CMActions
 /sys/homebutton/enable                                      u:object_r:sysfs_homebutton:s0
@@ -57,6 +59,8 @@
 /dev/stml0xx_as                                             u:object_r:sensors_device:s0
 /dev/stml0xx_ms                                             u:object_r:sensors_device:s0
 /data/misc/sensor(/.*)?                                     u:object_r:sensors_data_file:s0
+/data/misc/sensors(/.*)?                                    u:object_r:sensors_data_file:s0
+/data/system/sensors(/.*)?                                  u:object_r:sensors_data_file:s0
 
 # Laser
 /dev/laser                                                  u:object_r:laser_device:s0

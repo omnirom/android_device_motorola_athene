@@ -1,2 +1,2 @@
-allow cnd self:capability { chown dac_override fsetid setgid setuid  };
+# allow cnd self:capability { chown dac_override fsetid setgid setuid  }; # neverallow
 allow cnd system_wpa_socket:sock_file { unlink };

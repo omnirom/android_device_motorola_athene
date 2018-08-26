@@ -4,6 +4,6 @@ allow system_app sysfs_torch:file rw_file_perms;
 allow system_app time_daemon:unix_stream_socket connectto;
 allow system_app fuse_device:filesystem getattr;
 
-binder_call(system_app, per_mgr);
+binder_call(system_app, vendor_per_mgr);
 binder_call(system_app, qseeproxy);
 binder_call(system_app, wificond);

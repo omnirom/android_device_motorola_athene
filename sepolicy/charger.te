@@ -1,1 +1,1 @@
-allow charger self:capability { dac_override dac_read_search };
+# allow charger self:capability { dac_override dac_read_search }; # neverallow
