@@ -49,7 +49,7 @@ on early-init
 
 on init
     # Symbols required for motorola blobs
-    export LD_SHIM_LIBS "/system/vendor/lib/lib-imsvt.so|libshims_ims.so:/system/vendor/lib/libizat_core.so|libshims_get_process_name.so:/system/vendor/lib/libril-qc-qmi-1.so|rild_socket.so:/system/lib/libandroid.so|libshim_ril.so:/system/lib/libjustshoot.so|libshims_camera.so:/system/lib/soundfx/libspeakerbundle.so|libshims_speakerbundle.so:/system/lib/libmot_sensorlistener.so|libsensor.so:/system/vendor/lib/libmmcamera2_stats_modules.so|libsensor.so:/system/vendor/lib/libmmcamera2_sensor_modules.so|libsensor.so:/system/vendor/lib/libmmcamera2_pproc_modules.so|libsensor.so:/system/vendor/lib/libmmcamera2_imglib_modules.so|libsensor.so:/system/vendor/lib/libmmcamera2_iface_modules.so|libsensor.so:/system/vendor/lib/libmmcamera2_q3a_core.so|libsensor.so:/system/vendor/lib/libmmcamera2_mct.so|libsensor.so:/system/vendor/lib/libmmcamera_imglib.so|libsensor.so"
+    export LD_SHIM_LIBS "/system/vendor/lib/lib-imsvt.so|libshims_ims.so:/system/vendor/lib/libizat_core.so|libshims_get_process_name.so:/system/vendor/lib/libril-qc-qmi-1.so|rild_socket.so:/system/lib/libandroid.so|libshim_ril.so:/system/lib/hw/camera.msm8952.so|libshims_camera.so:/system/lib/libjustshoot.so|libshims_justshoot.so:/system/lib/soundfx/libspeakerbundle.so|libshims_speakerbundle.so"
 
     start qfintverify
 

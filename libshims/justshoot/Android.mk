@@ -1,4 +1,3 @@
-#
 # Copyright (C) 2016 The CyanogenMod Project
 # Copyright (C) 2017 The LineageOS Project
 #
@@ -16,4 +15,9 @@
 
 LOCAL_PATH := $(call my-dir)
 
-include $(call all-makefiles-under, $(LOCAL_PATH))
+include $(CLEAR_VARS)
+LOCAL_SRC_FILES := MediaCodec.cpp AudioSource.cpp MetaData.cpp
+LOCAL_SHARED_LIBRARIES := libstagefright libmedia
+LOCAL_MODULE := libshims_justshoot
+LOCAL_MODULE_TAGS := optional
+include $(BUILD_SHARED_LIBRARY)
