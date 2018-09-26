@@ -63,6 +63,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/privapp_permissions_misc.xml:system/etc/permissions/privapp_permissions_misc.xml
 
+# External camera
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/camera/external_camera_config.xml:$(TARGET_COPY_OUT_VENDOR)/etc/external_camera_config.xml
+
 # Screen density
 PRODUCT_AAPT_CONFIG := normal
 
