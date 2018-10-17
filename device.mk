@@ -91,7 +91,8 @@ PRODUCT_PACKAGES += \
 
 # Audio
 PRODUCT_PACKAGES += \
-    audio.primary.msm8952
+    audio.primary.msm8952 \
+    libshims_speakerbundle
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_effects_vendor.conf:system/etc/audio_effects_vendor.conf \
