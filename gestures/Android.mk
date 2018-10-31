@@ -7,31 +7,27 @@ LOCAL_SRC_FILES := $(call all-java-files-under, src)
 
 LOCAL_PACKAGE_NAME := Gestures
 LOCAL_CERTIFICATE := platform
+LOCAL_PRIVATE_PLATFORM_APIS := true
 LOCAL_PRIVILEGED_MODULE := true
+LOCAL_USE_AAPT2 := true
 
-LOCAL_STATIC_JAVA_LIBRARIES := \
-    android-support-v14-preference \
+LOCAL_STATIC_ANDROID_LIBRARIES := \
     android-support-v7-appcompat \
     android-support-v7-preference \
-    android-support-v7-recyclerview
+    android-support-v7-recyclerview \
+    android-support-v14-preference
 
 LOCAL_PROGUARD_FLAG_FILES := proguard.flags
 
 LOCAL_RESOURCE_DIR := \
-    $(LOCAL_PATH)/res \
-    frameworks/support/v7/appcompat/res \
-    frameworks/support/preference/res \
-    frameworks/support/v7/recyclerview/res
-
-LOCAL_AAPT_FLAGS := --auto-add-overlay \
-    --extra-packages android.support.v14.preference:android.support.v7.appcompat:android.support.v7.preference:android.support.v7.recyclerview
+    $(LOCAL_PATH)/res
 
 ifneq ($(INCREMENTAL_BUILDS),)
     LOCAL_PROGUARD_ENABLED := disabled
     LOCAL_JACK_ENABLED := incremental
 endif
 
-#include frameworks/base/packages/SettingsLib/common.mk
+include frameworks/base/packages/SettingsLib/common.mk
 
 include $(BUILD_PACKAGE)
 
