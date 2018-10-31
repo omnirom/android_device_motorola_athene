@@ -132,8 +132,8 @@ PRODUCT_PACKAGES += \
     omni_charger_res_images
 
 # Gestures
-#PRODUCT_PACKAGES += \
-#    Gestures
+PRODUCT_PACKAGES += \
+    Gestures
 
 # Display
 PRODUCT_PACKAGES += \
