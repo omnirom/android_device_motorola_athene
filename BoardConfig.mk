@@ -204,7 +204,7 @@ include device/qcom/sepolicy/sepolicy.mk
 # MUST NOT USE LOCAL_PATH
 BOARD_SEPOLICY_DIRS += \
     device/motorola/athene/sepolicy
-#include vendor/omni/sepolicy/sepolicy.mk
+include vendor/omni/sepolicy/sepolicy.mk
 
 DEVICE_MANIFEST_FILE := $(LOCAL_PATH)/configs/manifest.xml
 
