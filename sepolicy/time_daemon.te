@@ -1,2 +1,5 @@
 get_prop(time_daemon, diag_prop);
 allow time_daemon sysfs:file r_file_perms;
+allow time_daemon sysfs_soc_qcom:file r_file_perms;
+allow time_daemon time_data_file:dir r_dir_perms;
+allow time_daemon time_data_file:file rw_file_perms;

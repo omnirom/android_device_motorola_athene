@@ -1,0 +1,4 @@
+allow healthd sysfs:file r_file_perms;
+allow healthd sysfs_battery:file r_file_perms;
+allow healthd sysfs_battery:lnk_file r_file_perms;
+allow healthd sysfs_soc_qcom:file r_file_perms;

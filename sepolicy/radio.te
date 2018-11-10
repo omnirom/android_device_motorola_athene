@@ -1,3 +1,5 @@
+set_prop(radio, net_rmnet_prop);
+
 # allow radio persist_file:dir rw_dir_perms; # neverallow
 allow radio qmuxd_socket:dir search;
 allow radio qmuxd_socket:sock_file write;

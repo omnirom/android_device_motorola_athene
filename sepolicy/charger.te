@@ -1,1 +1,5 @@
 # allow charger self:capability { dac_override dac_read_search }; # neverallow
+allow charger sysfs_battery:file r_file_perms;
+allow charger sysfs_battery:lnk_file r_file_perms;
+allow charger sysfs_soc_qcom:file r_file_perms;
+allow charger sysfs_soc_qcom:lnk_file r_file_perms;

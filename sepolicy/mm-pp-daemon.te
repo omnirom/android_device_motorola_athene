@@ -1,2 +1,6 @@
 allow mm-pp-daemon diag_device:chr_file { ioctl open read write };
+allow mm-pp-daemon ion_device:chr_file { ioctl open read write };
+allow mm-pp-daemon sysfs_graphics:lnk_file r_file_perms;
+allow mm-pp-daemon sysfs_soc_qcom:dir r_dir_perms;
+allow mm-pp-daemon sysfs_soc_qcom:file r_file_perms;
 set_prop(mm-pp-daemon, hw_cabl_prop);

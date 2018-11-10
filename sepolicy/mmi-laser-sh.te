@@ -10,5 +10,7 @@ allow mmi-laser-sh rootfs:file { open read entrypoint };
 allow mmi-laser-sh shell_exec:file { read getattr };
 allow mmi-laser-sh shell_exec:file { read getattr };
 allow mmi-laser-sh sysfs:file { write getattr open };
+allow mmi-laser-sh sysfs_kernel_range:dir r_dir_perms;
+allow mmi-laser-sh sysfs_kernel_range:file r_file_perms;
 allow mmi-laser-sh vendor_shell_exec:file { entrypoint };
 allow mmi-laser-sh vendor_toolbox_exec:file { execute_no_trans };

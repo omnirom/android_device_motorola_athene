@@ -31,10 +31,17 @@ type fsg_file, fs_type, contextmount_type;
 type sysfs_fpc, fs_type, sysfs_type;
 type sysfs_homebutton, fs_type, sysfs_type;
 type sysfs_torch, fs_type, sysfs_type;
+type sysfs_soc_qcom, fs_type, sysfs_type;
+type sysfs_usb_gadget, fs_type, sysfs_type;
+type sysfs_usb_param, fs_type, sysfs_type;
+type sysfs_binder, fs_type, sysfs_type;
 
 # sysfs
 type sysfs_mmi_laser, fs_type, sysfs_type;
 type sysfs_mmi_touch, fs_type, sysfs_type;
+
+type sysfs_battery, fs_type, sysfs_type;
+type sysfs_kernel_range, fs_type, sysfs_type;
 
 type nv_data_file, file_type;
 type wifi_firmware_file, file_type;

@@ -97,6 +97,10 @@ on early-boot
     write /sys/bus/msm_subsys/devices/subsys3/restart_level "related"
 
 on boot
+    # Change permission for wakelock files
+    chmod 0666 /sys/power/wake_lock
+    chmod 0666 /sys/power/wake_unlock
+
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
@@ -1132,6 +1136,11 @@ on property:init.svc.surfaceflinger=stopped
 
 on property:init.svc.surfaceflinger=running
     start ppd
+
+on property:init.svc.rmt_storage=running
+    # Change back permission for wakelock files
+    chmod 0660 /sys/power/wake_lock
+    chmod 0660 /sys/power/wake_unlock
 
 service wcnss-service /system/vendor/bin/wcnss_service
     class main

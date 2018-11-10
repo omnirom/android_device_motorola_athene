@@ -7,3 +7,7 @@ hw.motosh.booted            u:object_r:motosh_prop:s0
 ro.hw.revision              u:object_r:hw_rev_prop:s0
 hw.touch.status             u:object_r:touch_prop:s0
 hw.cabl.                    u:object_r:hw_cabl_prop:s0
+persist.net.doxlat          u:object_r:net_xlat_prop:s0
+net.rmnet_data0.			u:object_r:net_rmnet_prop:s0
+wc_transport.stack_bdaddr   u:object_r:bluetooth_prop:s0
+sys.ims.                    u:object_r:ims_prop:s0

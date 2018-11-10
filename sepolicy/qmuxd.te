@@ -1,2 +1,4 @@
 allow qmuxd diag_device:chr_file { ioctl open read write };
 allow qmuxd sysfs:file read;
+allow qmuxd sysfs_soc_qcom:dir r_dir_perms;
+allow qmuxd sysfs_soc_qcom:file r_file_perms;

@@ -13,6 +13,7 @@
 /system/bin/stm.*                                           u:object_r:sensor_hub_exec:s0
 /system/vendor/bin/thermal-engine                           u:object_r:thermal-engine_exec:s0
 /system/bin/qmi_motext_hook                                 u:object_r:rild_exec:s0
+system/bin/storaged                                         u:object_r:storaged_exec:s0
 
 # Camera
 /data/cam_socket[12]                                        u:object_r:camera_socket:s0
@@ -49,7 +50,9 @@
 # RIL
 /data/misc/cutback(/.*)?                                    u:object_r:cutback_data_file:s0
 /data/misc/netmgr(/.*)?                                     u:object_r:netmgr_data_file:s0
+/data/misc/radio(/.*)?                                      u:object_r:radio_data_file:s0
 /dev/socket/cutback                                         u:object_r:rild_socket:s0
+/persist/mdm/oma_dm_update                                  u:object_r:persist_file:s0
 
 # Radio
 /dev/radio(/.*)?                                            u:object_r:radio_data_file:s0
@@ -61,6 +64,7 @@
 /data/misc/sensor(/.*)?                                     u:object_r:sensors_data_file:s0
 /data/misc/sensors(/.*)?                                    u:object_r:sensors_data_file:s0
 /data/system/sensors(/.*)?                                  u:object_r:sensors_data_file:s0
+/sys/module/stml0xx(/.*)?                                   u:object_r:sysfs_sensors:s0
 
 # Laser
 /dev/laser                                                  u:object_r:laser_device:s0
@@ -88,5 +92,22 @@
 /sys/kernel/debug/rpm_master_stats                          u:object_r:debugfs_rpm:s0
 #/sys/devices/soc.0/1de0000.qcom,venus(/.*)?                 u:object_r:sysfs_soc_qcom:s0
 
+/sys/class/graphics(/.*)?                                   u:object_r:sysfs_graphics:s0
+/sys/devices/virtual/graphics/fb[0-1](/.*)?                 u:object_r:sysfs_graphics:s0
+/sys/class/power_supply/battery(/.*)?                       u:object_r:sysfs_battery:s0
+/sys/kernel/range(/.*)?                                     u:object_r:sysfs_kernel_range:s0
+
+# QCOM SoC
+/sys/devices/soc.0(/.*)?                                    u:object_r:sysfs_soc_qcom:s0
+#/sys/devices/soc.0/qcom,cpubw.51/devfreq/qcom,cpubw.51(/.*)? u:object_r:sysfs_soc_qcom:s0
+
 # USB HAL
 /(vendor|system/vendor)/bin/hw/android\.hardware\.usb@1\.0-service\.basic u:object_r:hal_usb_default_exec:s0
+
+# USB
+/sys/devices/platform/msm_hsusb/gadget(/.*)?                u:object_r:sysfs_usb_gadget:s0
+/sys/module/phy_msm_usb/parameters(/.*)?                    u:object_r:sysfs_usb_param:s0
+/sys/module/g_android/parameters(/.*)?                      u:object_r:sysfs_usb_param:s0
+
+# Binder
+/sys/module/binder(/.*)?                                    u:object_r:sysfs_binder:s0

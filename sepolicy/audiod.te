@@ -1,3 +1,4 @@
-allow audiod proc:file r_file_perms;
-allow audiod sysfs:file r_file_perms;
-allow audiod sysfs:dir r_dir_perms;
+allow audiod proc_asound:file r_file_perms;
+allow audiod proc_asound:dir r_dir_perms;
+allow audiod sysfs_switch:dir r_dir_perms;
+allow audiod sysfs_switch:file r_file_perms;

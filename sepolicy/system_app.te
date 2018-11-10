@@ -1,5 +1,7 @@
 allow system_app sysfs_homebutton:file rw_file_perms;
 allow system_app sysfs_homebutton:file rw_file_perms;
+allow system_app sysfs_soc_qcom:dir r_dir_perms;
+allow system_app sysfs_torch:dir r_dir_perms;
 allow system_app sysfs_torch:file rw_file_perms;
 allow system_app time_daemon:unix_stream_socket connectto;
 allow system_app fuse_device:filesystem getattr;

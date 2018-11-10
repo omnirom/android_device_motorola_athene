@@ -1,4 +1,8 @@
+#binder_call(init, hwservicemanager); # Neverallow
+#binder_call(init, system_server); # Neverallow
+
 # Unsure what init is doing here
+#allow init adsprpcd_file:dir create; # Neverallow
 allow init app_data_file:dir setattr;
 allow init block_device:blk_file write;
 allow init cid_block_device:blk_file setattr;
@@ -10,12 +14,37 @@ allow init fsg_file:dir { mounton };
 allow init hob_block_device:blk_file setattr;
 allow init hw_revs_data_file:file append;
 allow init logs_block_device:blk_file setattr;
+allow init proc:file { rw_file_perms setattr };
 allow init property_socket:sock_file write;
 allow init pstorefs:dir mounton;
 allow init self:netlink_route_socket { bind create setopt };
 allow init self:tcp_socket { create ioctl };
 allow init sensors_device:chr_file { write ioctl };
 allow init socket_device:sock_file { create setattr unlink };
+allow init sysfs_boot_adsp:file { r_file_perms setattr };
+allow init sysfs_poweron_alarm:file rw_file_perms;
+allow init sysfs_soc_qcom:file { rw_file_perms setattr };
+allow init sysfs_soc_qcom:lnk_file r_file_perms;
+allow init sysfs_battery:file setattr;
+allow init sysfs_battery:lnk_file r_file_perms;
+allow init sysfs_binder:file { getattr w_file_perms };
+allow init sysfs_fm:file { rw_file_perms setattr };
+allow init sysfs_graphics:file setattr;
+allow init sysfs_graphics:lnk_file r_file_perms;
+allow init sysfs_homebutton:file setattr;
+allow init sysfs_kernel_range:file setattr;
+allow init sysfs_lowmemorykiller:file { getattr w_file_perms };
+allow init sysfs_msm_power:file { rw_file_perms setattr };
+allow init sysfs_net:file { rw_file_perms setattr };
+allow init sysfs_power:file setattr;
+allow init sysfs_process_reclaim:file { getattr w_file_perms };
+allow init sysfs_sensors:file setattr;
+allow init sysfs_thermal:file rw_file_perms;
+allow init sysfs_torch:file setattr;
+allow init sysfs_usb_gadget:file setattr;
+allow init sysfs_usb_param:file { rw_file_perms setattr };
+allow init sysfs_wlan_fwpath:file setattr;
+allow init sysfs_devices_system_cpu:file rw_file_perms;
 allow init thermal_device:chr_file ioctl;
 allow init utags_block_device:blk_file { setattr write };
 allow init thermal-engine_exec:file { getattr open read execute };
