@@ -87,3 +87,6 @@
 /sys/kernel/debug/rpm_stats                                 u:object_r:debugfs_rpm:s0
 /sys/kernel/debug/rpm_master_stats                          u:object_r:debugfs_rpm:s0
 #/sys/devices/soc.0/1de0000.qcom,venus(/.*)?                 u:object_r:sysfs_soc_qcom:s0
+
+# USB HAL
+/(vendor|system/vendor)/bin/hw/android\.hardware\.usb@1\.0-service\.basic u:object_r:hal_usb_default_exec:s0
