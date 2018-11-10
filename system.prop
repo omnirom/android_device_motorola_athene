@@ -64,6 +64,7 @@ persist.radio.aosp_usr_pref_sel=true
 ril.ecclist=112,911,999,*911,#911
 ril.ecclist1=112,911,999,*911,#911,991,994
 persist.dbg.volte_avail_ovr=1
+persist.radio.add_power_save=1
 
 # Display
 debug.sf.hw=1
