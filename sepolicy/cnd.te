@@ -1,2 +1,5 @@
 # allow cnd self:capability { chown dac_override fsetid setgid setuid  }; # neverallow
+allow cnd self:capability { setgid setuid };
 allow cnd system_wpa_socket:sock_file { unlink };
+allow cnd sysfs_soc_qcom:dir search;
+allow cnd sysfs_soc_qcom:file r_file_perms;

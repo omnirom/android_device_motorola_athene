@@ -5,3 +5,4 @@ allow thermal-engine socket_device:sock_file { create_file_perms };
 allow thermal-engine sysfs_battery:lnk_file r_file_perms;
 allow thermal-engine sysfs_soc_qcom:dir r_dir_perms;
 allow thermal-engine sysfs_soc_qcom:file rw_file_perms;
+allow thermal-engine sysfs_soc_qcom:lnk_file r_file_perms;
