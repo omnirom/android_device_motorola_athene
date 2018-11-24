@@ -11,3 +11,5 @@ persist.net.doxlat          u:object_r:net_xlat_prop:s0
 net.rmnet_data0.			u:object_r:net_rmnet_prop:s0
 wc_transport.stack_bdaddr   u:object_r:bluetooth_prop:s0
 sys.ims.                    u:object_r:ims_prop:s0
+camera.                     u:object_r:camera_prop:s0
+persist.camera.             u:object_r:vendor_camera_prop:s0

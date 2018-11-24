@@ -1,6 +1,10 @@
+set_prop(cameraserver, vendor_camera_prop);
+
 allow cameraserver perfd_data_file:sock_file write;
 #allow cameraserver perfd:unix_stream_socket connectto;
+allow cameraserver mm-qcamerad:unix_dgram_socket sendto;
 allow cameraserver socket_device:sock_file write;
 allow cameraserver perfd_data_file:dir search;
+allow cameraserver camera_data_file:dir r_dir_perms;
 allow cameraserver camera_service_old:service_manager { add find };
-
+allow cameraserver display_service_old:service_manager { add find };

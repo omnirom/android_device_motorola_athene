@@ -19,6 +19,7 @@ system/bin/storaged                                         u:object_r:storaged_
 /data/cam_socket[12]                                        u:object_r:camera_socket:s0
 /data/camera(/.*)?                                          u:object_r:camera_socket:s0
 /data/misc/camera/cam_socket[1-2]                           u:object_r:camera_socket:s0
+/persist/camera/ledcal(/.*)?                                u:object_r:persist_file:s0
 
 # CMActions
 /sys/homebutton/enable                                      u:object_r:sysfs_homebutton:s0

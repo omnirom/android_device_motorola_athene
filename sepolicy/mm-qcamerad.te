@@ -1,6 +1,10 @@
 binder_call(mm-qcamerad, servicemanager)
 binder_call(mm-qcamerad, system_server)
 
+get_prop(mm-qcamerad, vendor_camera_prop);
+set_prop(mm-qcamerad, camera_prop);
+
+allow mm-qcamerad camera_data_file:dir { add_name r_dir_perms remove_name write };
 allow mm-qcamerad camera_data_file:sock_file { create unlink write };
 allow mm-qcamerad camera_socket:dir w_dir_perms;
 allow mm-qcamerad camera_socket:sock_file { create unlink write };
@@ -23,4 +27,5 @@ allow mm-qcamerad system_data_file:file open;
 allow mm-qcamerad system_server:unix_stream_socket { read write };
 allow mm-qcamerad untrusted_app:fd use;
 allow mm-qcamerad untrusted_app_25:fd use;
+allow mm-qcamerad untrusted_app_27:fd use;
 allow mm-qcamerad vendor_camera_data_file:file rw_file_perms;

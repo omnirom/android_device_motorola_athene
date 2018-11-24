@@ -6,5 +6,5 @@ allow wcnss_service self:capability { net_raw };
 allow wcnss_service sysfs_soc_qcom:dir r_dir_perms;
 allow wcnss_service sysfs_soc_qcom:file r_file_perms;
 allow wcnss_service wifi_data_file:dir rw_dir_perms;
-allow wcnss_service wifi_data_file:file r_file_perms;
+allow wcnss_service wifi_data_file:file rw_file_perms;
 allow wcnss_service wifi_firmware_file:file r_file_perms;
