@@ -28,8 +28,7 @@ TARGET_FS_CONFIG_GEN := \
     $(LOCAL_PATH)/fs_config/file_caps.txt
 
 # Asserts
-#TARGET_OTA_ASSERT_DEVICE := athene,athene_f,xt1621,xt1622,xt1625,xt1626,xt1640,xt1641,xt1642,xt1643,xt1644
-TARGET_OTA_ASSERT_DEVICE := none
+TARGET_OTA_ASSERT_DEVICE := athene,athene_f,xt1621,xt1622,xt1625,xt1626,xt1640,xt1641,xt1642,xt1643,xt1644
 
 # Platform
 TARGET_BOARD_PLATFORM := msm8952
