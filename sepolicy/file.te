@@ -20,6 +20,9 @@ type cutback_data_file, file_type, data_file_type, core_data_file_type;
 # RIL
 type netmgr_data_file, file_type, data_file_type, core_data_file_type;
 
+# Location
+type loc_data_file, file_type, data_file_type, core_data_file_type;
+
 # CMHW
 type vibeamp_sysfs, fs_type, sysfs_type;
 
