@@ -58,4 +58,7 @@
     <!-- The CPU temperature sensor path -->
     <string name="config_cpuTempSensor" translatable="false">/sys/class/thermal/thermal_zone11/temp</string>
 
+    <!-- The CPUs to display in CPUInfoService view -->
+    <string name="config_displayCpus" translatable="false">0,4</string>
+
 </resources>
