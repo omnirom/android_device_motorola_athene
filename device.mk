@@ -211,6 +211,7 @@ PRODUCT_COPY_FILES += \
 
 # IMS
 PRODUCT_PACKAGES += \
+    ims-ext-common \
     libshims_ims
 
 # IRSC
