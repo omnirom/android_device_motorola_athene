@@ -38,7 +38,6 @@ persist.radio.VT_HYBRID_ENABLE=1
 persist.radio.VT_USE_MDM_TIME=0
 persist.radio.calls.on.ims=true
 persist.radio.domain.ps=0
-persist.radio.jbims=1
 persist.radio.snapshot_enabled=1
 persist.radio.snapshot_timer=22
 persist.radio.videopause.mode=0
@@ -64,6 +63,7 @@ ro.telephony.call_ring.multiple=false
 persist.radio.aosp_usr_pref_sel=true
 ril.ecclist=112,911,999,*911,#911
 ril.ecclist1=112,911,999,*911,#911,991,994
+persist.dbg.volte_avail_ovr=1
 
 # Display
 debug.sf.hw=1
