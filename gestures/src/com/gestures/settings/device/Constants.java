@@ -31,11 +31,19 @@ public class Constants {
     // Wakeup key
     public static final String FP_HOME_WAKEUP_KEY = "fp_home_wakeup";
 
+    // Display key
+    public static final String DISPLAY_BURNIN_KEY = "display_burnin";
+
     // Swap nodes
     public static final String FP_HOME_NODE = "/sys/homebutton/enable";
 
     // Wakeup node
     public static final String FP_HOME_WAKEUP_NODE = "/sys/homebutton/enable_wakeup";
+
+    // Display node
+    public static final String DISPLAY_BURNIN_NODE = "/sys/devices/platform/kcal_ctrl.0/kcal";
+    public static final String DISPLAY_BURNIN_ENABLED = "180 180 180";
+    public static final String DISPLAY_BURNIN_DISABLED = "256 256 256";
 
     // Holds <preference_key> -> <proc_node> mapping
     public static final Map<String, String> sBooleanNodePreferenceMap = new HashMap<>();
@@ -46,13 +54,16 @@ public class Constants {
     public static final String[] sButtonPrefKeys = {
         FP_HOME_KEY,
         FP_HOME_WAKEUP_KEY,
+        DISPLAY_BURNIN_KEY
     };
 
     static {
         sBooleanNodePreferenceMap.put(FP_HOME_KEY, FP_HOME_NODE);
         sBooleanNodePreferenceMap.put(FP_HOME_WAKEUP_KEY, FP_HOME_WAKEUP_NODE);
+        sBooleanNodePreferenceMap.put(DISPLAY_BURNIN_KEY, DISPLAY_BURNIN_NODE);
         sNodeDefaultMap.put(FP_HOME_KEY, false);
         sNodeDefaultMap.put(FP_HOME_WAKEUP_KEY, false);
+        sNodeDefaultMap.put(DISPLAY_BURNIN_KEY, false);
     }
 
     public static boolean isPreferenceEnabled(Context context, String key) {

@@ -149,4 +149,12 @@
     <string name="fingerprint_as_home_summary">Use the fingerprint sensor as a home button</string>
     <string name="fingerprint_wakeup_title">Fingerprint wake-up</string>
     <string name="fingerprint_wakeup_summary">Allow the fingerprint sensor to wake the device while the screen is off</string>
+
+    <!-- Display category -->
+    <!-- Title -->
+    <string name="display_title">Display</string>
+
+    <!-- Display: Burn-in protection switch -->
+    <string name="display_burnin_title">Burn-in protection</string>
+    <string name="display_burnin_summary">Toggle KCAL display burn-in protection</string>
 </resources>

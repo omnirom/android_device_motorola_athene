@@ -34,6 +34,7 @@ allow init sysfs_fpc:file setattr;
 allow init sysfs_graphics:file setattr;
 allow init sysfs_graphics:lnk_file r_file_perms;
 allow init sysfs_homebutton:file setattr;
+allow init sysfs_kcal:file setattr;
 allow init sysfs_kernel_range:file setattr;
 allow init sysfs_lowmemorykiller:file { getattr w_file_perms };
 allow init sysfs_msm_power:file { rw_file_perms setattr };

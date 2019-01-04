@@ -112,3 +112,6 @@ system/bin/storaged                                         u:object_r:storaged_
 
 # Binder
 /sys/module/binder(/.*)?                                    u:object_r:sysfs_binder:s0
+
+# KCAL
+/sys/devices/platform/kcal_ctrl.0/kcal                      u:object_r:sysfs_kcal:s0

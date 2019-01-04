@@ -71,6 +71,18 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:key="display_key"
+        android:title="@string/display_title">
+
+        <SwitchPreference
+            android:key="display_burnin"
+            android:defaultValue="false"
+            android:title="@string/display_burnin_title"
+            android:summary="@string/display_burnin_summary" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:key="fp_key"
         android:title="@string/fingerprint_title" >
 

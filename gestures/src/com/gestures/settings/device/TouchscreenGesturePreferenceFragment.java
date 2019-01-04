@@ -102,11 +102,14 @@ public class TouchscreenGesturePreferenceFragment extends PreferenceFragment {
                 }
             });
             String node = Constants.sBooleanNodePreferenceMap.get(pref);
-            if (new File(node).exists()) {
-                String curNodeValue = FileUtils.readOneLine(node);
-                b.setChecked(curNodeValue.equals("1"));
-            } else {
-                b.setEnabled(false);
+            if (!node.isEmpty()) {
+                if (new File(node).exists()) {
+                    String curNodeValue = FileUtils.readOneLine(node);
+                    b.setChecked(curNodeValue.equals("1") ||
+                            curNodeValue.equals(Constants.DISPLAY_BURNIN_ENABLED));
+                } else {
+                    b.setEnabled(false);
+                }
             }
         }
     }
