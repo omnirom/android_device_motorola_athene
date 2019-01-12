@@ -33,50 +33,33 @@ public class DisplayColors {
     private static final String TAG = "Gestures-DisplayColors";
 
     private final Context mContext;
-    private final UpdatedStateNotifier mUpdatedStateNotifier;
     private boolean mBurnInProtectionEnabled;
 
-    public DisplayColors(Context context, UpdatedStateNotifier updatedStateNotifier) {
+    // Display node
+    public static final String DISPLAY_BURNIN_NODE = "/sys/devices/platform/kcal_ctrl.0/kcal";
+    public static final String DISPLAY_BURNIN_ENABLED = "180 180 180";
+    public static final String DISPLAY_BURNIN_DISABLED = "256 256 256";
+
+    // Display key
+    public static final String DISPLAY_BURNIN_KEY = "display_burnin";
+
+    public DisplayColors(Context context) {
         mContext = context;
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
         loadPreferences(sharedPrefs);
-        sharedPrefs.registerOnSharedPreferenceChangeListener(mPrefListener);
-        mUpdatedStateNotifier = updatedStateNotifier;
     }
 
-    public boolean isBurnInProtectionEnabled() {
-        return mBurnInProtectionEnabled;
+    public static boolean isBurnInProtectionEnabled() {
+        return FileUtils.readOneLine(DISPLAY_BURNIN_NODE).equals(DISPLAY_BURNIN_ENABLED);
     }
 
     public void loadPreferences(SharedPreferences sharedPreferences) {
-        mBurnInProtectionEnabled = sharedPreferences.getBoolean(Constants.DISPLAY_BURNIN_KEY, false);
+        mBurnInProtectionEnabled = sharedPreferences.getBoolean(DISPLAY_BURNIN_KEY, false);
         enableBurnInProtection(mBurnInProtectionEnabled);
     }
 
-    private SharedPreferences.OnSharedPreferenceChangeListener mPrefListener =
-            new SharedPreferences.OnSharedPreferenceChangeListener() {
-        @Override
-        public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-            boolean updated = true;
-
-            if (Constants.DISPLAY_BURNIN_KEY.equals(key)) {
-                mBurnInProtectionEnabled = sharedPreferences.getBoolean(Constants.DISPLAY_BURNIN_KEY, false);
-                enableBurnInProtection(mBurnInProtectionEnabled);
-            } else {
-                updated = false;
-            }
-
-            if (updated) {
-                mUpdatedStateNotifier.updateState();
-            }
-        }
-    };
-
-    public void enableBurnInProtection(boolean enabled) {
-        if (enabled) {
-            FileUtils.writeLine(Constants.DISPLAY_BURNIN_NODE, Constants.DISPLAY_BURNIN_ENABLED);
-        } else {
-            FileUtils.writeLine(Constants.DISPLAY_BURNIN_NODE, Constants.DISPLAY_BURNIN_DISABLED);
-        }
+    public static void enableBurnInProtection(boolean enabled) {
+        FileUtils.writeLine(DISPLAY_BURNIN_NODE,
+                enabled ? DISPLAY_BURNIN_ENABLED : DISPLAY_BURNIN_DISABLED);
     }
 }

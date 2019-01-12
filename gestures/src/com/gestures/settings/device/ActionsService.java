@@ -49,7 +49,7 @@ public class ActionsService extends IntentService implements ScreenStateNotifier
         Log.d(TAG, "Starting");
 
         ActionsSettings cmActionsSettings = new ActionsSettings(context, this);
-        DisplayColors displayColors = new DisplayColors(context, this);
+        DisplayColors displayColors = new DisplayColors(context);
         mSensorHelper = new SensorHelper(context);
         mScreenReceiver = new ScreenReceiver(context, this);
 

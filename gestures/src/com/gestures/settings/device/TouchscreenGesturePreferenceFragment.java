@@ -36,6 +36,8 @@ import com.gestures.settings.device.FileUtils;
 public class TouchscreenGesturePreferenceFragment extends PreferenceFragment {
     private static final String CATEGORY_AMBIENT_DISPLAY = "ambient_display_key";
     private static final String CATEGORY_FINGER_PRINT = "fp_key";
+    public static final String DISPLAY_BURNIN_PREF = "display_burnin";
+    private SwitchPreference mBurnInPref;
     private SwitchPreference mFlipPref;
     private NotificationManager mNotificationManager;
     private static boolean mFpsAvailable =
@@ -105,13 +107,26 @@ public class TouchscreenGesturePreferenceFragment extends PreferenceFragment {
             if (!node.isEmpty()) {
                 if (new File(node).exists()) {
                     String curNodeValue = FileUtils.readOneLine(node);
-                    b.setChecked(curNodeValue.equals("1") ||
-                            curNodeValue.equals(Constants.DISPLAY_BURNIN_ENABLED));
+                    b.setChecked(curNodeValue.equals("1"));
                 } else {
                     b.setEnabled(false);
                 }
             }
         }
+        // Initialize display preference
+        mBurnInPref = (SwitchPreference) findPreference(DISPLAY_BURNIN_PREF);
+        mBurnInPref.setChecked(DisplayColors.isBurnInProtectionEnabled());
+        mBurnInPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                String node = DisplayColors.DISPLAY_BURNIN_NODE;
+                if (!TextUtils.isEmpty(node)) {
+                    Boolean enabled = (Boolean) newValue;
+                    DisplayColors.enableBurnInProtection(enabled);
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 
     @Override
