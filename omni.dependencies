@@ -13,12 +13,6 @@
   },
   {
     "remote": "omnirom",
-    "repository": "android_vendor_qcom_opensource_interfaces",
-    "target_path": "vendor/qcom/opensource/interfaces",
-    "revision": "android-9.0"
-  },
-  {
-    "remote": "omnirom",
     "repository": "android_device_motorola_athene",
     "target_path": "device/motorola/athene",
     "revision": "android-9.0"
