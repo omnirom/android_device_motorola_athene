@@ -477,7 +477,7 @@ on post-fs-data
     mkdir /data/data/media 0770 media media
 
     #Create folder for mm-qcamera-daemon
-    mkdir /data/camera 0770 media camera
+    mkdir /data/vendor/camera 0770 media camera
 
     #Create PERFD deamon related dirs
     mkdir /data/system/perfd 0770 root system
@@ -594,7 +594,7 @@ on post-fs-data
     mkdir /data/.fps 0770 system fingerp
 
     # Imager tuning data for camera subsystem
-    mkdir /data/misc/imager 0770 camera camera
+    mkdir /data/vendor/misc/imager 0770 camera camera
 
 # Services Start here
 service qfintverify /sbin/qfintverify
@@ -1077,7 +1077,6 @@ service qcamerasvr /system/vendor/bin/mm-qcamera-daemon
    class main
    user camera
    group camera system inet input graphics
-   writepid /dev/cpuset/system-background/tasks
 
 # Allow usb charging to be disabled peristently
 on property:persist.usb.chgdisabled=1
