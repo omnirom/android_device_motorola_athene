@@ -43,6 +43,10 @@
 #include "cutils/android_reboot.h"
 #include "cryptfs_hw.h"
 
+#ifdef LEGACY_HW_DISK_ENCRYPTION
+#define QSEECOM_LIBRARY_NAME "libQSEEComAPI.so"
+#endif
+
 /*
  * When device comes up or when user tries to change the password, user can
  * try wrong password upto a certain number of times. If user enters wrong
@@ -57,6 +61,13 @@
 #define SET_HW_DISK_ENC_KEY				1
 #define UPDATE_HW_DISK_ENC_KEY				2
 
+#ifdef LEGACY_HW_DISK_ENCRYPTION
+static int loaded_library = 0;
+static int (*qseecom_create_key)(int, void*);
+static int (*qseecom_update_key)(int, void*, void*);
+static int (*qseecom_wipe_key)(int);
+#endif
+
 #define CRYPTFS_HW_KMS_CLEAR_KEY			0
 #define CRYPTFS_HW_KMS_WIPE_KEY				1
 #define CRYPTFS_HW_UP_CHECK_COUNT			10
@@ -67,6 +78,8 @@
 #define CRYPTFS_HW_CREATE_KEY_FAILED			-7
 
 #define CRYPTFS_HW_ALGO_MODE_AES_XTS 			0x3
+
+#define METADATA_PARTITION_NAME "/dev/block/bootdevice/by-name/metadata"
 
 enum cryptfs_hw_key_management_usage_type {
 	CRYPTFS_HW_KM_USAGE_DISK_ENCRYPTION		= 0x01,
@@ -83,6 +96,89 @@ static inline void* secure_memset(void* v, int c , size_t n)
 	return v;
 }
 
+#ifdef LEGACY_HW_DISK_ENCRYPTION
+static int is_qseecom_up()
+{
+    int i = 0;
+    char value[PROPERTY_VALUE_MAX] = {0};
+
+    for (; i<CRYPTFS_HW_UP_CHECK_COUNT; i++) {
+        property_get("sys.keymaster.loaded", value, "");
+        if (!strncmp(value, "true", PROPERTY_VALUE_MAX))
+            return 1;
+        usleep(100000);
+    }
+    return 0;
+}
+
+static int load_qseecom_library()
+{
+    const char *error = NULL;
+    if (loaded_library)
+        return loaded_library;
+
+    if (!is_qseecom_up()) {
+        SLOGE("Timed out waiting for QSEECom listeners. Aborting FDE key operation");
+        return 0;
+    }
+
+    void * handle = dlopen(QSEECOM_LIBRARY_NAME, RTLD_NOW);
+    if (handle) {
+        dlerror(); /* Clear any existing error */
+        *(void **) (&qseecom_create_key) = dlsym(handle, "QSEECom_create_key");
+
+        if ((error = dlerror()) == NULL) {
+            SLOGD("Success loading QSEECom_create_key \n");
+            *(void **) (&qseecom_update_key) = dlsym(handle, "QSEECom_update_key_user_info");
+            if ((error = dlerror()) == NULL) {
+                SLOGD("Success loading QSEECom_update_key_user_info\n");
+                *(void **) (&qseecom_wipe_key) = dlsym(handle, "QSEECom_wipe_key");
+                if ((error = dlerror()) == NULL) {
+                    loaded_library = 1;
+                    SLOGD("Success loading QSEECom_wipe_key \n");
+                }
+                else
+                    SLOGE("Error %s loading symbols for QSEECom APIs \n", error);
+            }
+            else
+                SLOGE("Error %s loading symbols for QSEECom APIs \n", error);
+        }
+    } else {
+        SLOGE("Could not load libQSEEComAPI.so \n");
+    }
+
+    if (error)
+        dlclose(handle);
+
+    return loaded_library;
+}
+
+static int cryptfs_hw_create_key(enum cryptfs_hw_key_management_usage_type usage,
+					unsigned char *hash32)
+{
+	if (load_qseecom_library())
+		return qseecom_create_key(usage, hash32);
+
+	return CRYPTFS_HW_CREATE_KEY_FAILED;
+}
+
+static int cryptfs_hw_wipe_key(enum cryptfs_hw_key_management_usage_type usage)
+{
+	if (load_qseecom_library())
+		return qseecom_wipe_key(usage);
+
+	return CRYPTFS_HW_WIPE_KEY_FAILED;
+}
+
+static int cryptfs_hw_update_key(enum cryptfs_hw_key_management_usage_type usage,
+			unsigned char *current_hash32, unsigned char *new_hash32)
+{
+	if (load_qseecom_library())
+		return qseecom_update_key(usage, current_hash32, new_hash32);
+
+	return CRYPTFS_HW_UPDATE_KEY_FAILED;
+}
+#else
 static size_t memscpy(void *dst, size_t dst_size, const void *src, size_t src_size)
 {
 	size_t min_size = (dst_size < src_size) ? dst_size : src_size;
@@ -256,6 +352,7 @@ static int cryptfs_hw_update_key(enum cryptfs_hw_key_management_usage_type usage
 	close(qseecom_fd);
 	return ret;
 }
+#endif
 
 static int map_usage(int usage)
 {
@@ -288,20 +385,6 @@ static unsigned char* get_tmp_passwd(const char* passwd)
         SLOGE("%s: Passed argument is NULL \n", __func__);
     }
     return tmp_passwd;
-}
-
-static int is_qseecom_up()
-{
-    int i = 0;
-    char value[PROPERTY_VALUE_MAX] = {0};
-
-    for (; i<CRYPTFS_HW_UP_CHECK_COUNT; i++) {
-        property_get("vendor.sys.keymaster.loaded", value, "");
-        if (!strncmp(value, "true", PROPERTY_VALUE_MAX))
-            return 1;
-        usleep(100000);
-    }
-    return 0;
 }
 
 /*
@@ -361,7 +444,18 @@ int is_ice_enabled(void)
 {
   char prop_storage[PATH_MAX];
   int storage_type = 0;
-  int fd;
+
+  /*
+   * Since HW FDE is a compile time flag (due to QSSI requirements),
+   * this API conflicts with Metadata encryption even when ICE is
+   * enabled, as it encrypts the whole disk instead. Adding this
+   * workaround to return 0 if metadata partition is present.
+   */
+
+  if (access(METADATA_PARTITION_NAME, F_OK) == 0) {
+    SLOGI("Metadata partition, returning false");
+    return 0;
+  }
 
   if (property_get("ro.boot.bootdevice", prop_storage, "")) {
     if (strstr(prop_storage, "ufs")) {
@@ -399,6 +493,13 @@ int should_use_keymaster()
 {
     /*
      * HW FDE key should be tied to keymaster
+     * if version is above 0.3. this is to
+     * support msm8909 go target.
      */
-    return 1;
+     int rc = 1;
+     if (get_keymaster_version() == KEYMASTER_MODULE_API_VERSION_0_3) {
+        SLOGI("Keymaster version is 0.3");
+        rc = 0;
+     }
+     return rc;
 }
