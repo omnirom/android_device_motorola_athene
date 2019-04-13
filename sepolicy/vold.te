@@ -1,3 +1,4 @@
 # allow vold persist_file:dir { getattr read open ioctl }; # neverallow
 allow vold cache_file:dir create;
 allow vold sysfs_soc_qcom:file rw_file_perms;
+allow vold metadata_block_device:blk_file rw_file_perms;
