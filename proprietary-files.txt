@@ -14,6 +14,11 @@ vendor/lib/libactuator_lc898212xd.so
 vendor/lib/libactuator_mot_lc898212xd.so
 vendor/lib/libactuator_rohm_bu64243gwz.so
 
+# ATFWD
+vendor/lib/vendor.qti.hardware.radio.atcmdfwd@1.0_vendor.so
+bin/ATFWD-daemon
+priv-app/atfwd/atfwd.apk
+
 # Audio
 etc/acdbdata/Bluetooth_cal.acdb
 etc/acdbdata/General_cal.acdb
