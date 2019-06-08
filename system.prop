@@ -80,6 +80,7 @@ ro.sf.lcd_density=480
 persist.hwc.ptor.enable=true
 persist.mdpcomp_perfhint=50
 persist.metadata_dynfps.disable=true
+debug.hwui.use_buffer_age=false
 
 # Data
 ro.use_data_netmgrd=true
