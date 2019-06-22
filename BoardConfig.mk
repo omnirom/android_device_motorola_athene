@@ -172,7 +172,7 @@ BOARD_USES_QC_TIME_SERVICES := true
 TARGET_USES_QCOM_BSP := true
 
 # sdclang/LLVM
-TARGET_USE_SDCLANG := true
+#TARGET_USE_SDCLANG := true
 
 # Media
 TARGET_USES_MEDIA_EXTENSIONS := true
@@ -200,9 +200,6 @@ BOARD_PROVIDES_LIBRIL := true
 
 # Offline charging
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"
-
-# SDClang
-TARGET_USE_SDCLANG := true
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
