@@ -477,7 +477,7 @@ on post-fs-data
     mkdir /data/data/media 0770 media media
 
     #Create folder for mm-qcamera-daemon
-    mkdir /data/vendor/camera 0770 media camera
+    mkdir /data/vendor/camera 0770 camera camera
 
     #Create PERFD deamon related dirs
     mkdir /data/system/perfd 0770 root system
@@ -1074,7 +1074,7 @@ service setup_shutdown /system/bin/setup_shutdown.sh
 
 #start camera server as daemon
 service qcamerasvr /system/vendor/bin/mm-qcamera-daemon
-   class main
+   class late_start
    user camera
    group camera system inet input graphics
 
