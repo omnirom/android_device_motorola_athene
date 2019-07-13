@@ -1,3 +1,4 @@
+binder_call(system_server, mm-qcamerad);
 binder_call(system_server, per_mgr_service_old);
 
 allow system_server loc_data_file:dir { add_name create_dir_perms };

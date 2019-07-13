@@ -2,6 +2,7 @@ binder_call(mm-qcamerad, servicemanager)
 binder_call(mm-qcamerad, system_server)
 
 get_prop(mm-qcamerad, vendor_camera_prop);
+set_prop(mm-qcamerad, vendor_camera_prop);
 set_prop(mm-qcamerad, camera_prop);
 
 allow mm-qcamerad camera_data_file:dir { add_name r_dir_perms remove_name write };
@@ -11,6 +12,7 @@ allow mm-qcamerad camera_socket:sock_file { create unlink write };
 allow mm-qcamerad cgroup:file read;
 allow mm-qcamerad debug_prop:property_service set;
 allow mm-qcamerad device:chr_file ioctl;
+allow mm-qcamerad fwk_sensor_hwservice:hwservice_manager find;
 allow mm-qcamerad init:unix_stream_socket connectto;
 allow mm-qcamerad laser_device:chr_file { ioctl read write open };
 allow mm-qcamerad mediacodec:fd use;
